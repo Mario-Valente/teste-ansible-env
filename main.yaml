@@ -1,0 +1,4 @@
+- hosts: Hosts
+  become: yes
+  roles:
+    - get-envs

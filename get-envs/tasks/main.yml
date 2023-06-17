@@ -1,14 +1,21 @@
 ---
 # tasks file for get-envs
 
+#task utilizando o service manager 
 - name: lookup secretsmanager secret in the current region
   set_fact: 
-    secret_value: "{{ lookup('amazon.aws.aws_secret', 'DB_CONNECTION_FM_GEO-54ZBpF', bypath=true) }}"
+    secret_value: "{{ lookup('aws_ssm', 'teste-2') }}"
 
-- name: templae
+#task utilizando o secrets manager 
+- name: lookup secretsmanager secret in the current region
+  set_fact: 
+    secret_value: "{{ lookup('amazon.aws.aws_secret', 'DB_CONNECTION_FM_GEO') }}"
+
+
+- name: template
   template:
-    src: ""
-    dest: "/ubuntu/.env"
+    src: "./templates/.env.j2"
+    dest: "/home/ubuntu/.env"
     mode: 0755
     force: true
     owner: www-data
