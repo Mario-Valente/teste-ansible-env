@@ -4,7 +4,7 @@
 #task utilizando o service manager 
 - name: lookup secretsmanager secret in the current region
   set_fact: 
-    secret_value: "{{ lookup('aws_ssm', 'teste-2')}}"
+    secret_value: "{{ lookup('aws_ssm', 'teste-2') | split(',') }}"
     secret_value2: "{{lookup('aws_ssm', 'teste')}}"
 
 # task utilizando o secrets manager 
