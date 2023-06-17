@@ -4,9 +4,10 @@
 #task utilizando o service manager 
 - name: lookup secretsmanager secret in the current region
   set_fact: 
-    secret_value: "{{ lookup('aws_ssm', 'teste-2') }}"
+    secret_value: "{{ lookup('aws_ssm', 'teste-2')}}"
+    secret_value2: "{{lookup('aws_ssm', 'teste')}}"
 
-#task utilizando o secrets manager 
+# task utilizando o secrets manager 
 - name: lookup secretsmanager secret in the current region
   set_fact: 
     secret_value: "{{ lookup('amazon.aws.aws_secret', 'DB_CONNECTION_FM_GEO') }}"
